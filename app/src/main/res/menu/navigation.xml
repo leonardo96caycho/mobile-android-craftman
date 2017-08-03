@@ -7,8 +7,8 @@
         android:title="@string/tittle_offers" />
 
     <item
-        android:id="@+id/navigation_contracts"
+        android:id="@+id/navigation_orders"
         android:icon="@drawable/ic_playlist_add_check_black_24dp"
-        android:title="@string/tittle_contracts" />
+        android:title="@string/tittle_orders" />
 
 </menu>

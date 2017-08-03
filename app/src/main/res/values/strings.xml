@@ -2,7 +2,7 @@
     <string name="app_name">MuContactCraftmanApp</string>
     <string name="action_settings">Settings</string>
     <string name="tittle_offers">Offers</string>
-    <string name="tittle_contracts">Contracts</string>
+    <string name="tittle_orders">Orders</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -27,4 +27,13 @@
     <string name="signUpButton">Create Account</string>
     <string name="signInTextView">Already a member? Login</string>
     <string name="title_activity_main">Craftman App</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="instrument">Instrument</string>
+    <string name="locationReference">Location at</string>
+    <string name="title_activity_about_user">AboutUserActivity</string>
+    <string name="title_activity_about_publication">AboutPublicationActivity</string>
 </resources>
