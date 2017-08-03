@@ -1,5 +1,6 @@
 package com.mucontactcraftmanapp.network;
 
+import com.mucontactcraftmanapp.models.Craftman;
 import com.mucontactcraftmanapp.models.Musician;
 import com.mucontactcraftmanapp.models.Publication;
 import com.mucontactcraftmanapp.models.User;
@@ -10,20 +11,32 @@ import com.mucontactcraftmanapp.models.User;
 
 public class MuContactService {
     public static String USERS_URL = "https://mucontact.herokuapp.com/api/user";
+    public static String USERS_EDIT_URL = "https://mucontact.herokuapp.com/api/user/{user_id}";
     public static String SIGNUP_URL = "https://mucontact.herokuapp.com/api/signup";
     public static String SIGNIN_URL = "https://mucontact.herokuapp.com/api/signin";
     public static String MUSICIAN_USER_URL = "https://mucontact.herokuapp.com/api/musician/user/{user_id}";
     public static String PUBLICATION_URL = "https://mucontact.herokuapp.com/api/publication";
     public static String PUBLICATION_USER_URL = "https://mucontact.herokuapp.com/api/publication/user/{user_id}";
     public static String CRAFTMAN_URL = "https://mucontact.herokuapp.com/api/craftman";
-    public static String USERS_EDIT_URL = "https://mucontact.herokuapp.com/api/user/{user_id}";
+    public static String CRAFTMAN_USER_URL = "https://mucontact.herokuapp.com/api/craftman/user/{user_id}";
     public static String CONTRACT_URL = "https://mucontact.herokuapp.com/api/craftman";
 
     private User currentUser;
     private String currentToken;
     private Publication currentPublication;
     private Musician currentMusician;
+    private Craftman currentCraftman;
 
+
+
+    public Craftman getCurrentCraftman() {
+        return currentCraftman;
+    }
+
+    public MuContactService setCurrentCraftman(Craftman currentCraftman){
+        this.currentCraftman = currentCraftman;
+        return this;
+    }
 
     public User getCurrentUser() {
         return currentUser;
