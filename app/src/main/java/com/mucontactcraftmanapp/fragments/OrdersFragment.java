@@ -10,6 +10,14 @@ import android.view.ViewGroup;
 
 import com.mucontactcraftmanapp.R;
 
+import static com.mucontactcraftmanapp.R.id.container;
+
 public class OrdersFragment extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_orders, container, false);
+        return view;
+    }
 
 }
