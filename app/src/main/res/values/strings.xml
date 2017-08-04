@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="tittle_offers">Offers</string>
     <string name="tittle_orders">Orders</string>
+    <string name="tittle_contracts">Contracts</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->

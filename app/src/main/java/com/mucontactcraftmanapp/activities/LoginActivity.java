@@ -106,10 +106,14 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             token = response.getString("token");
                             user = User.build(response.getJSONObject("user"));
-                            MuContactCraftmanApp.getInstance().setCurrentToken(token);
-                            MuContactCraftmanApp.getInstance().setCurrentUser(user);
-                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-                            updateCraftman();
+                            if(user.getUserType().equals("Craftman")) {
+                                MuContactCraftmanApp.getInstance().setCurrentToken(token);
+                                MuContactCraftmanApp.getInstance().setCurrentUser(user);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                                updateCraftman();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "You need a craftman count", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -142,7 +146,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), "Error in craftman profile", Toast.LENGTH_SHORT).show();
-                        finish();
                     }
                 });
     }

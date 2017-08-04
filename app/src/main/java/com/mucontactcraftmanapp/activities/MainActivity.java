@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.mucontactcraftmanapp.R;
+import com.mucontactcraftmanapp.fragments.ContratcsFragment;
 import com.mucontactcraftmanapp.fragments.HomeFragment;
 import com.mucontactcraftmanapp.fragments.OrdersFragment;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.navigation_home: return new HomeFragment();
             case R.id.navigation_orders: return new OrdersFragment();
+            case R.id.navigation_contracts: return  new ContratcsFragment();
         }
         return null;
     }
