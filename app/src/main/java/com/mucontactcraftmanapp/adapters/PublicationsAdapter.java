@@ -12,6 +12,7 @@ import com.mucontactcraftmanapp.MuContactCraftmanApp;
 import com.mucontactcraftmanapp.R;
 import com.mucontactcraftmanapp.activities.AboutPublicationActivity;
 import com.mucontactcraftmanapp.models.Publication;
+import com.mucontactcraftmanapp.models.User;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapter.ViewHolder>{
     private List<Publication> publications;
+    private List<User> users;
 
     public PublicationsAdapter() {
     }

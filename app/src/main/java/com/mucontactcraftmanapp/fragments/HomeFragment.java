@@ -59,9 +59,9 @@ public class HomeFragment extends Fragment {
 
         private void updatePublications() {
         AndroidNetworking
-                .get(MuContactService.PUBLICATION_URL)
-                .addPathParameter("user_id", user.get_id())
-                .setTag(TAG)
+                .get(MuContactService.PUBLICATION_STATE_URL)
+                .addPathParameter("state_publication", "A")
+                    .setTag(TAG)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

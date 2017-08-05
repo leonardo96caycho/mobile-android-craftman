@@ -15,6 +15,7 @@ import java.util.List;
 
 public class Publication extends SugarRecord{
     private String _id;
+    private String state;
     private String instrument;
     private String description;
     private String locationReference;
@@ -25,8 +26,9 @@ public class Publication extends SugarRecord{
     public Publication() {
     }
 
-    public Publication(String _id, String instrument, String description, String locationReference, String createdAt, String craftmen, User user) {
+    public Publication(String _id, String state, String instrument, String description, String locationReference, String createdAt, String craftmen, User user) {
         this._id = _id;
+        this.state = state;
         this.instrument = instrument;
         this.description = description;
         this.locationReference = locationReference;
@@ -41,6 +43,13 @@ public class Publication extends SugarRecord{
 
     public Publication set_id(String _id) {
         this._id = _id;
+        return this;
+    }
+
+    public String getState() { return state; }
+
+    public Publication setState(String state){
+        this.state = state;
         return this;
     }
 
@@ -100,6 +109,7 @@ public class Publication extends SugarRecord{
         Publication publication = new Publication();
         try {
             publication.set_id(jsonPublication.getString("_id"))
+                    .setState(jsonPublication.getString("state"))
                     .setInstrument(jsonPublication.getString("instrument"))
                     .setDescription(jsonPublication.getString("description"))
                     .setCreatedAt(jsonPublication.getString("date"))

@@ -49,11 +49,8 @@ public class AboutPublicationActivity extends AppCompatActivity {
     private TextView displayNameTextView;
     private TextView emailTextView;
     private TextView phoneTextView;
-    private List<Musician> musicians;
     public String TAG="MuContact";
     Publication publication;
-    Musician musician;
-    User user;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_publication);
@@ -70,14 +67,12 @@ public class AboutPublicationActivity extends AppCompatActivity {
         phoneTextView = (TextView) findViewById(R.id.phoneTextView);
 
         publication = MuContactCraftmanApp.getInstance().getCurrentPublication();
-        musician = MuContactCraftmanApp.getInstance().getCurrentMusician();
-        user = MuContactCraftmanApp.getInstance().getCurrentUser();
         instrumentEditText.setText(publication.getInstrument());
         descriptionEditText.setText(publication.getDescription());
         locationAtEditText.setText(publication.getLocationReference());
-        //displayNameTextView.setText(musicianValues().);
-        //emailTextView.setText(musician.getUser().getEmail());
-        //phoneTextView.setText(musician.getPhone());
+        displayNameTextView.setText(publication.getUser().getDisplayName());
+        emailTextView.setText(publication.getUser().getEmail());
+        //phoneTextView.setText(publication.getUser()getPhone());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.createContractFloatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,14 +81,6 @@ public class AboutPublicationActivity extends AppCompatActivity {
 
                 }});
     }
-
-    private void musicianValues() {
-        AndroidNetworking
-                .get(MuContactService.MUSICIAN_USER_URL)
-                .addPathParameter("_id", publication.get_id())
-                .setTag(TAG)
-                .setPriority(Priority.LOW)
-                .build();
-    }}
+}
 
 
