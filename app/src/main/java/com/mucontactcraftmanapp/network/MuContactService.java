@@ -16,6 +16,7 @@ public class MuContactService {
     public static String SIGNIN_URL = "https://mucontact.herokuapp.com/api/signin";
     public static String MUSICIAN_USER_URL = "https://mucontact.herokuapp.com/api/musician/user/{user_id}";
     public static String PUBLICATION_URL = "https://mucontact.herokuapp.com/api/publication";
+    public static String PUBLICATION_ID_URL = "https://mucontact.herokuapp.com/api/publication/{publication_id}";
     public static String PUBLICATION_STATE_URL ="https://mucontact.herokuapp.com/api/publication/state/{state_publication}";
     public static String PUBLICATION_USER_URL = "https://mucontact.herokuapp.com/api/publication/user/{user_id}";
     public static String CRAFTTMAN_URL = "https://mucontact.herokuapp.com/api/craftman";

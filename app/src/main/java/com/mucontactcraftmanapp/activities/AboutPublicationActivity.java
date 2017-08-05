@@ -1,21 +1,11 @@
 package com.mucontactcraftmanapp.activities;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,13 +24,6 @@ import com.mucontactcraftmanapp.network.MuContactService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class AboutPublicationActivity extends AppCompatActivity {
     private ANImageView photoPublicationANImageView;
@@ -69,6 +52,7 @@ public class AboutPublicationActivity extends AppCompatActivity {
         emailTextView = (TextView) findViewById(R.id.emailTextView);
         phoneTextView = (TextView) findViewById(R.id.phoneTextView);
 
+        craftman = MuContactCraftmanApp.getInstance().getCurrentCraftman();
         publication = MuContactCraftmanApp.getInstance().getCurrentPublication();
         instrumentEditText.setText(publication.getInstrument());
         descriptionEditText.setText(publication.getDescription());
@@ -86,9 +70,9 @@ public class AboutPublicationActivity extends AppCompatActivity {
     }
     public void createContract(){
         AndroidNetworking.post(MuContactService.CONTRACT_URL)
-                .addBodyParameter("publication", publication.getId().toString())
+                .addBodyParameter("publication", publication.get_id().toString())
                 .addBodyParameter("craftman", craftman.get_id().toString())
-                .addBodyParameter("user", publication.getUser().toString())
+                .addBodyParameter("user", publication.getUser().get_id().toString())
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -96,11 +80,32 @@ public class AboutPublicationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(getApplicationContext(), "Done!", Toast.LENGTH_SHORT).show();
+                        updatePublication();
                         finish();
                     }
                     @Override
                     public void onError(ANError error) {
                         Toast.makeText(getApplicationContext(), "Failed to save contract", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void updatePublication() {
+        AndroidNetworking
+                .put(MuContactService.PUBLICATION_ID_URL)
+                .addPathParameter("publication_id", publication.get_id().toString())
+                .addBodyParameter("state", "N")
+                .setTag(TAG)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response == null) return;
+                    }
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.d(TAG, anError.getMessage());
                     }
                 });
     }

@@ -1,10 +1,6 @@
 package com.mucontactcraftmanapp.fragments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,13 +26,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
-
 public class HomeFragment extends Fragment {
     private RecyclerView publicationsRecyclerView;
     private PublicationsAdapter publicationsAdapter;
     private RecyclerView.LayoutManager publicationsLayoutManager;
     private List<Publication> publications;
+    private User currentUser;
     private User user;
     String TAG = "MuContact";
     public HomeFragment(){
@@ -52,7 +47,7 @@ public class HomeFragment extends Fragment {
             publicationsLayoutManager = new LinearLayoutManager(view.getContext());
             publicationsRecyclerView.setAdapter(publicationsAdapter);
             publicationsRecyclerView.setLayoutManager(publicationsLayoutManager);
-            user = MuContactCraftmanApp.getInstance().getCurrentUser();
+            currentUser = MuContactCraftmanApp.getInstance().getCurrentUser();
             updatePublications();
             return view;
         }
