@@ -26,6 +26,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.widget.ANImageView;
 import com.mucontactcraftmanapp.MuContactCraftmanApp;
 import com.mucontactcraftmanapp.R;
+import com.mucontactcraftmanapp.models.Craftman;
 import com.mucontactcraftmanapp.models.Musician;
 import com.mucontactcraftmanapp.models.Publication;
 import com.mucontactcraftmanapp.models.User;
@@ -51,6 +52,8 @@ public class AboutPublicationActivity extends AppCompatActivity {
     private TextView phoneTextView;
     public String TAG="MuContact";
     Publication publication;
+    Craftman craftman;
+    User user;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_publication);
@@ -78,8 +81,28 @@ public class AboutPublicationActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                    createContract();
                 }});
+    }
+    public void createContract(){
+        AndroidNetworking.post(MuContactService.CONTRACT_URL)
+                .addBodyParameter("publication", publication.getId().toString())
+                .addBodyParameter("craftman", craftman.get_id().toString())
+                .addBodyParameter("user", publication.getUser().toString())
+                .setTag(TAG)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getApplicationContext(), "Done!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        Toast.makeText(getApplicationContext(), "Failed to save contract", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
 

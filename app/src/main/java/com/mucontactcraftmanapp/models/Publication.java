@@ -108,13 +108,23 @@ public class Publication extends SugarRecord{
         if(jsonPublication == null) return null;
         Publication publication = new Publication();
         try {
-            publication.set_id(jsonPublication.getString("_id"))
-                    .setState(jsonPublication.getString("state"))
-                    .setInstrument(jsonPublication.getString("instrument"))
-                    .setDescription(jsonPublication.getString("description"))
-                    .setCreatedAt(jsonPublication.getString("date"))
-                    .setLocationReference(jsonPublication.getString("locationAt"))
-                    .setUser(user);
+            if ( user == null) {
+                publication.set_id(jsonPublication.getString("_id"))
+                        .setState(jsonPublication.getString("state"))
+                        .setInstrument(jsonPublication.getString("instrument"))
+                        .setDescription(jsonPublication.getString("description"))
+                        .setCreatedAt(jsonPublication.getString("date"))
+                        .setLocationReference(jsonPublication.getString("locationAt"))
+                        .setUser(user.build(jsonPublication.getJSONObject("user")));
+            } else {
+                publication.set_id(jsonPublication.getString("_id"))
+                        .setState(jsonPublication.getString("state"))
+                        .setInstrument(jsonPublication.getString("instrument"))
+                        .setDescription(jsonPublication.getString("description"))
+                        .setCreatedAt(jsonPublication.getString("date"))
+                        .setLocationReference(jsonPublication.getString("locationAt"))
+                        .setUser(user);
+            }
             return publication;
         } catch (JSONException e) {
             e.printStackTrace();

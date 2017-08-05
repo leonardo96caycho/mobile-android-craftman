@@ -137,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         if(response == null) return;
                         try {
-                            craftmen = Craftman.build(response.getJSONArray("Craftman"), user);
+                            craftmen = Craftman.build(response.getJSONArray("craftman"), user);
                             MuContactCraftmanApp.getInstance().setCurrentCraftman(craftmen.get(0));
                         } catch (JSONException e) {
                             e.printStackTrace();
