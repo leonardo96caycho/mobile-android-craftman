@@ -4,7 +4,11 @@
     tools:context=".activities.MainActivity">
 
     <item android:id="@+id/action_profile"
-        android:icon="@drawable/ic_person_black_24dp"
+        android:icon="@drawable/ic_person_white_24dp"
         android:title="@string/action_profile"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_contracts"
+        android:icon="@drawable/ic_playlist_add_check_white_24dp"
+        android:title="@string/tittle_contracts"
         app:showAsAction="ifRoom"/>
 </menu>

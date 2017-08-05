@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView.LayoutManager publicationsLayoutManager;
     private List<Publication> publications;
     private User user;
-
+    String TAG = "MuContact";
     public HomeFragment(){
 
     }

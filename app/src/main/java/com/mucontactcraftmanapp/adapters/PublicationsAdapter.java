@@ -37,7 +37,7 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
 
     @Override
     public void onBindViewHolder(
-            PublicationsAdapter.ViewHolder holder, final int position) {
+            PublicationsAdapter.ViewHolder holder, int position) {
 
         holder.instrumentTextView.setText(publications.get(position).getInstrument());
         holder.descriptionTextView.setText(publications.get(position).getDescription());

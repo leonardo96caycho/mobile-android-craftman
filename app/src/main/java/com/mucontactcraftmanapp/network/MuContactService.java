@@ -17,16 +17,15 @@ public class MuContactService {
     public static String MUSICIAN_USER_URL = "https://mucontact.herokuapp.com/api/musician/user/{user_id}";
     public static String PUBLICATION_URL = "https://mucontact.herokuapp.com/api/publication";
     public static String PUBLICATION_USER_URL = "https://mucontact.herokuapp.com/api/publication/user/{user_id}";
-    public static String CRAFTMAN_URL = "https://mucontact.herokuapp.com/api/craftman";
+    public static String CRAFTTMAN_URL = "https://mucontact.herokuapp.com/api/craftman";
     public static String CRAFTMAN_USER_URL = "https://mucontact.herokuapp.com/api/craftman/user/{user_id}";
-    public static String CONTRACT_URL = "https://mucontact.herokuapp.com/api/craftman";
+    public static String CONTRACT_URL = "https://mucontact.herokuapp.com/api/contract";
 
     private User currentUser;
     private String currentToken;
     private Publication currentPublication;
     private Musician currentMusician;
     private Craftman currentCraftman;
-
 
 
     public Craftman getCurrentCraftman() {

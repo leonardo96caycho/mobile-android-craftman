@@ -79,11 +79,20 @@ public class Craftman {
         if(jsonCraftman == null) return null;
         Craftman craftman = new Craftman();
         try {
-            craftman.set_id(jsonCraftman.getString("_id"))
-                    .setLevel(jsonCraftman.getString("level"))
-                    .setPhone(jsonCraftman.getString("phone"))
-                    .setDescription(jsonCraftman.getString("description"))
-                    .setUser(user.build(jsonCraftman.getJSONObject("user")));
+            if( user == null){
+                craftman.set_id(jsonCraftman.getString("_id"))
+                        .setLevel(jsonCraftman.getString("level"))
+                        .setPhone(jsonCraftman.getString("phone"))
+                        .setDescription(jsonCraftman.getString("description"))
+                        .setUser(user.build(jsonCraftman.getJSONObject("user")));
+            } else {
+                craftman.set_id(jsonCraftman.getString("_id"))
+                        .setLevel(jsonCraftman.getString("level"))
+                        .setPhone(jsonCraftman.getString("phone"))
+                        .setDescription(jsonCraftman.getString("description"))
+                        .setUser(user);
+            }
+
             return craftman;
         } catch (JSONException e) {
             e.printStackTrace();
